@@ -149,6 +149,7 @@
       this.teamOneScoreTextBox.Name = "teamOneScoreTextBox";
       this.teamOneScoreTextBox.Size = new System.Drawing.Size(100, 35);
       this.teamOneScoreTextBox.TabIndex = 9;
+      this.teamOneScoreTextBox.Text = "0";
       // 
       // teamTwoScoreTextBox
       // 
@@ -156,6 +157,7 @@
       this.teamTwoScoreTextBox.Name = "teamTwoScoreTextBox";
       this.teamTwoScoreTextBox.Size = new System.Drawing.Size(100, 35);
       this.teamTwoScoreTextBox.TabIndex = 11;
+      this.teamTwoScoreTextBox.Text = "0";
       // 
       // scoreTwoLabel
       // 
