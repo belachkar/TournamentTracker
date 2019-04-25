@@ -49,7 +49,7 @@
       this.headerLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.headerLabel.Font = new System.Drawing.Font("Segoe UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.headerLabel.ForeColor = System.Drawing.SystemColors.Highlight;
-      this.headerLabel.Location = new System.Drawing.Point(288, 25);
+      this.headerLabel.Location = new System.Drawing.Point(284, 25);
       this.headerLabel.Name = "headerLabel";
       this.headerLabel.Size = new System.Drawing.Size(324, 50);
       this.headerLabel.TabIndex = 1;
@@ -242,7 +242,7 @@
       this.createTournamentBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.createTournamentBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.createTournamentBtn.ForeColor = System.Drawing.SystemColors.Highlight;
-      this.createTournamentBtn.Location = new System.Drawing.Point(321, 549);
+      this.createTournamentBtn.Location = new System.Drawing.Point(317, 549);
       this.createTournamentBtn.Name = "createTournamentBtn";
       this.createTournamentBtn.Size = new System.Drawing.Size(223, 71);
       this.createTournamentBtn.TabIndex = 26;

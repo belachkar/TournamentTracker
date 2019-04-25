@@ -25,7 +25,7 @@
     private void InitializeComponent() {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TournamentViewerForm));
       this.headerLabel = new System.Windows.Forms.Label();
-      this.TounamentNameLabel = new System.Windows.Forms.Label();
+      this.tounamentNameLabel = new System.Windows.Forms.Label();
       this.roundLabel = new System.Windows.Forms.Label();
       this.roundDropDownCB = new System.Windows.Forms.ComboBox();
       this.unplayedOnlyCheckbox = new System.Windows.Forms.CheckBox();
@@ -46,23 +46,23 @@
       this.headerLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.headerLabel.Font = new System.Drawing.Font("Segoe UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.headerLabel.ForeColor = System.Drawing.SystemColors.Highlight;
-      this.headerLabel.Location = new System.Drawing.Point(216, 25);
+      this.headerLabel.Location = new System.Drawing.Point(213, 25);
       this.headerLabel.Name = "headerLabel";
       this.headerLabel.Size = new System.Drawing.Size(220, 50);
       this.headerLabel.TabIndex = 0;
       this.headerLabel.Text = "Tournament:";
       // 
-      // TounamentNameLabel
+      // tounamentNameLabel
       // 
-      this.TounamentNameLabel.AutoSize = true;
-      this.TounamentNameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.TounamentNameLabel.Font = new System.Drawing.Font("Segoe UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.TounamentNameLabel.ForeColor = System.Drawing.SystemColors.Highlight;
-      this.TounamentNameLabel.Location = new System.Drawing.Point(442, 25);
-      this.TounamentNameLabel.Name = "TounamentNameLabel";
-      this.TounamentNameLabel.Size = new System.Drawing.Size(150, 50);
-      this.TounamentNameLabel.TabIndex = 1;
-      this.TounamentNameLabel.Text = "<none>";
+      this.tounamentNameLabel.AutoSize = true;
+      this.tounamentNameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.tounamentNameLabel.Font = new System.Drawing.Font("Segoe UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tounamentNameLabel.ForeColor = System.Drawing.SystemColors.Highlight;
+      this.tounamentNameLabel.Location = new System.Drawing.Point(439, 25);
+      this.tounamentNameLabel.Name = "tounamentNameLabel";
+      this.tounamentNameLabel.Size = new System.Drawing.Size(150, 50);
+      this.tounamentNameLabel.TabIndex = 1;
+      this.tounamentNameLabel.Text = "<none>";
       // 
       // roundLabel
       // 
@@ -216,7 +216,7 @@
       this.Controls.Add(this.unplayedOnlyCheckbox);
       this.Controls.Add(this.roundDropDownCB);
       this.Controls.Add(this.roundLabel);
-      this.Controls.Add(this.TounamentNameLabel);
+      this.Controls.Add(this.tounamentNameLabel);
       this.Controls.Add(this.headerLabel);
       this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -231,7 +231,7 @@
     #endregion
 
     private System.Windows.Forms.Label headerLabel;
-    private System.Windows.Forms.Label TounamentNameLabel;
+    private System.Windows.Forms.Label tounamentNameLabel;
     private System.Windows.Forms.Label roundLabel;
     private System.Windows.Forms.ComboBox roundDropDownCB;
     private System.Windows.Forms.CheckBox unplayedOnlyCheckbox;

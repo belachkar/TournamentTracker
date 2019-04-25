@@ -43,7 +43,7 @@
       this.headerLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.headerLabel.Font = new System.Drawing.Font("Segoe UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.headerLabel.ForeColor = System.Drawing.SystemColors.Highlight;
-      this.headerLabel.Location = new System.Drawing.Point(163, 25);
+      this.headerLabel.Location = new System.Drawing.Point(167, 25);
       this.headerLabel.Name = "headerLabel";
       this.headerLabel.Size = new System.Drawing.Size(210, 50);
       this.headerLabel.TabIndex = 13;
@@ -146,7 +146,7 @@
       this.createPrizeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.createPrizeBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.createPrizeBtn.ForeColor = System.Drawing.SystemColors.Highlight;
-      this.createPrizeBtn.Location = new System.Drawing.Point(163, 400);
+      this.createPrizeBtn.Location = new System.Drawing.Point(162, 400);
       this.createPrizeBtn.Name = "createPrizeBtn";
       this.createPrizeBtn.Size = new System.Drawing.Size(223, 71);
       this.createPrizeBtn.TabIndex = 28;
