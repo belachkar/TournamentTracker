@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TrackerUI {
@@ -13,7 +10,12 @@ namespace TrackerUI {
     static void Main() {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new TournamentDashBoardForm());
+
+      // Initialize the database connections
+      TrackerLibrary.GlobalConfig.InitializeConnections(true, true);
+
+      // Application.Run(new TournamentDashBoardForm());
+      Application.Run(new CreatePrizeForm());
     }
   }
 }

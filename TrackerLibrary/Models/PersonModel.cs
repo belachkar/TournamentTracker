@@ -1,4 +1,4 @@
-﻿namespace TrackerLibrary {
+﻿namespace TrackerLibrary.Models {
 
   /// <summary>
   /// Represents one person.
@@ -23,7 +23,7 @@
     /// <summary>
     /// The cell phonbe number of the person.
     /// </summary>
-    public string CellPhoneNumber { get; set; }
+    public string CellPhoneNbr { get; set; }
 
   }
 }
