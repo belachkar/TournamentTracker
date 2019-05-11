@@ -1,4 +1,12 @@
-﻿using TrackerLibrary.Models;
+﻿using Dapper;
+using System.Data;
+using TrackerLibrary.Models;
+
+//@PlaceNbr int, 
+//@PlaceName nvarchar(50),
+//@PrizeAmount money,
+//@PrizePercentage float,
+//@id int = 0 output
 
 namespace TrackerLibrary.DataAccess {
   public class SqlConnector : IDataConnection {
@@ -11,8 +19,23 @@ namespace TrackerLibrary.DataAccess {
     public PrizeModel CreatePrize(PrizeModel model) {
 
       // TODO - Make the create prize methode save to the database.
-      model.id = 1;
-      return model;
+      //model.id = 1;
+      //return model;
+      // to close the connection properly for the code between the curely brackets.
+      using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments"))) {
+        var p = new DynamicParameters();
+        p.Add("@PlaceNbr", model.PlaceNumber);
+        p.Add("@PlaceName", model.PlaceName);
+        p.Add("@PrizeAmount", model.PrizeAmount);
+        p.Add("@PrizePercentage", model.PrizePercentage);
+        p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+        connection.Execute("dbo.spPrizes_Insert", p, commandType: CommandType.StoredProcedure);
+
+        model.id = p.Get<int>("@id");
+
+        return model;
+      }
     }
   }
 }

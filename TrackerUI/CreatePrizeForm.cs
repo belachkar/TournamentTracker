@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using TrackerLibrary;
-using TrackerLibrary.DataAccess;
 using TrackerLibrary.Models;
 
 namespace TrackerUI {
@@ -16,14 +15,14 @@ namespace TrackerUI {
           placeNameTextBox.Text, 
           placeNumberTextBox.Text, 
           prizeAmountTextBox.Text, 
-          prizeAmountTextBox.Text);
-        foreach (IDataConnection db in GlobalConfig.Connections) {
-          db.CreatePrize(model);
-        }
+          prizePercentageTextBox.Text);
+
+        GlobalConfig.Connection.CreatePrize(model);
+
         placeNameTextBox.Text = "";
         placeNumberTextBox.Text = "";
         prizeAmountTextBox.Text = "0";
-        prizeAmountTextBox.Text = "0";
+        prizePercentageTextBox.Text = "0";
       } else {
         MessageBox.Show("This form has invalid information. Please check it and try again.");
       }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using TrackerLibrary;
 
 namespace TrackerUI {
   static class Program {
@@ -12,7 +13,7 @@ namespace TrackerUI {
       Application.SetCompatibleTextRenderingDefault(false);
 
       // Initialize the database connections
-      TrackerLibrary.GlobalConfig.InitializeConnections(true, true);
+      TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.Sql);
 
       // Application.Run(new TournamentDashBoardForm());
       Application.Run(new CreatePrizeForm());
