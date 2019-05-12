@@ -18,10 +18,7 @@ namespace TrackerLibrary.DataAccess {
     /// <returns>The prize information, including the id.</returns>
     public PrizeModel CreatePrize(PrizeModel model) {
 
-      // TODO - Make the create prize methode save to the database.
-      //model.id = 1;
-      //return model;
-      // to close the connection properly for the code between the curely brackets.
+      // Using using to close the connection properly for the code between the curely brackets.
       using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments"))) {
         var p = new DynamicParameters();
         p.Add("@PlaceNbr", model.PlaceNumber);
