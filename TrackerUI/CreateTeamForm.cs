@@ -101,5 +101,24 @@ namespace TrackerUI {
         WireUpLists();
       }
     }
+
+    private void CreateTeamBtn_Click(object sender, EventArgs e) {
+      TeamModel model = new TeamModel();
+      teamNameTextBox.Text = teamNameTextBox.Text.Trim();
+
+      if (teamNameTextBox.Text.Length > 0) {
+        if (selectedTeamMembers.Count > 0) {
+          model.TeamName = teamNameTextBox.Text;
+          model.TeamMembers = selectedTeamMembers;
+          GlobalConfig.Connection.CreateTeam(model);
+        } else {
+          MessageBox.Show("You must select team membres, the list can not be empty");
+        }
+      } else {
+        MessageBox.Show("You must specity a Team Name");
+      }
+
+      // TODO: If we aren't closing this form after creation, reset the form.
+    }
   }
 }
