@@ -30,5 +30,9 @@
     /// </summary>
     public string CellPhoneNbr { get; set; }
 
+    public string FullName {
+      get { return $"{FirstName} {LastName}"; }
+    }
+
   }
 }

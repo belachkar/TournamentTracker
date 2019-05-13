@@ -1,19 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrackerLibrary;
 using TrackerLibrary.Models;
 
 namespace TrackerUI {
   public partial class CreateTeamForm : Form {
+    private List<PersonModel> availableTeamMembers = GlobalConfig.Connection.GetPerson_All();
+    private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
+
     public CreateTeamForm() {
       InitializeComponent();
+      //CreateSimpleData();
+      WireUpLists();
+    }
+
+    private void CreateSimpleData() {
+      availableTeamMembers.Add(new PersonModel { FirstName = "Ali", LastName = "Belachkar" });
+      availableTeamMembers.Add(new PersonModel { FirstName = "Steave", LastName = "Kamlin" });
+
+      selectedTeamMembers.Add(new PersonModel { FirstName = "Tim", LastName = "Rover" });
+      selectedTeamMembers.Add(new PersonModel { FirstName = "Mahdi", LastName = "Belachkar" });
+    }
+
+    private void WireUpLists() {
+      selectTeamMemeberDropDownCB.DataSource = null;
+      selectTeamMemeberDropDownCB.DataSource = availableTeamMembers;
+      selectTeamMemeberDropDownCB.DisplayMember = "FullName";
+
+      tournamentMembersListBox.DataSource = null;
+      tournamentMembersListBox.DataSource = selectedTeamMembers;
+      tournamentMembersListBox.DisplayMember = "FullName";
     }
 
     private void CreateMemberBtn_Click(object sender, EventArgs e) {
@@ -56,9 +73,29 @@ namespace TrackerUI {
         output = false;
       }
 
-
-
       return output;
+    }
+
+    private void AddTeamMemberBtn_Click(object sender, EventArgs e) {
+      PersonModel p = (PersonModel)selectTeamMemeberDropDownCB.SelectedItem;
+
+      if (p != null) {
+        availableTeamMembers.Remove(p);
+        selectedTeamMembers.Add(p);
+
+        WireUpLists(); 
+      }
+    }
+
+    private void RemoveSelectedMemberBtn_Click(object sender, EventArgs e) {
+      PersonModel p = (PersonModel)tournamentMembersListBox.SelectedItem;
+
+      if (p != null) {
+        selectedTeamMembers.Remove(p);
+        availableTeamMembers.Add(p);
+
+        WireUpLists(); 
+      }
     }
   }
 }

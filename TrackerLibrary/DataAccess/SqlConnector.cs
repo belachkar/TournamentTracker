@@ -1,5 +1,7 @@
 ﻿using Dapper;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using TrackerLibrary.Models;
 
 //@PlaceNbr int, 
@@ -10,6 +12,7 @@ using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAccess {
   public class SqlConnector : IDataConnection {
+    private const string DB = "Tournaments";
 
     /// <summary>
     /// Saves a new prize to the database.
@@ -19,7 +22,7 @@ namespace TrackerLibrary.DataAccess {
     public PrizeModel CreatePrize(PrizeModel model) {
 
       // Using using to close the connection properly for the code between the curely brackets.
-      using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments"))) {
+      using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(DB))) {
         var p = new DynamicParameters();
         p.Add("@PlaceNbr", model.PlaceNumber);
         p.Add("@PlaceName", model.PlaceName);
@@ -37,7 +40,7 @@ namespace TrackerLibrary.DataAccess {
 
     public PersonModel CreatePerson(PersonModel model) {
       // Using using to close the connection properly for the code between the curely brackets.
-      using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments"))) {
+      using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(DB))) {
         var p = new DynamicParameters();
         p.Add("@FirstName", model.FirstName);
         p.Add("@LastName", model.LastName);
@@ -51,6 +54,14 @@ namespace TrackerLibrary.DataAccess {
 
         return model;
       }
+    }
+
+    public List<PersonModel> GetPerson_All() {
+      List<PersonModel> output;
+      using(IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(DB))) {
+        output = connection.Query<PersonModel>("dbo.spPeople_GetAll").ToList();
+      }
+      return output;
     }
   }
 }
