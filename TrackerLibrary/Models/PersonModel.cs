@@ -6,6 +6,11 @@
   public class PersonModel {
 
     /// <summary>
+    /// The unique identifier for the prize
+    /// </summary>
+    public int id { get; set; }
+
+    /// <summary>
     /// The first name of the person.
     /// </summary>
     public string FirstName { get; set; }

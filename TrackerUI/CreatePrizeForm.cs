@@ -12,9 +12,9 @@ namespace TrackerUI {
     private void CreatePrizeBtn_Click(object sender, EventArgs e) {
       if (IsFormValid()) {
         PrizeModel model = new PrizeModel(
-          placeNameTextBox.Text, 
-          placeNumberTextBox.Text, 
-          prizeAmountTextBox.Text, 
+          placeNameTextBox.Text,
+          placeNumberTextBox.Text,
+          prizeAmountTextBox.Text,
           prizePercentageTextBox.Text);
 
         GlobalConfig.Connection.CreatePrize(model);
@@ -39,7 +39,7 @@ namespace TrackerUI {
       if (placeNbr < 1) {
         output = false;
       }
-      if (placeNumberTextBox.Text.Length == 0) {
+      if (placeNameTextBox.Text.Trim().Length == 0) {
         output = false;
       }
       decimal prizeAmount = 0;
