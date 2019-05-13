@@ -49,7 +49,7 @@ namespace TrackerLibrary.DataAccess {
     }
 
     public List<PersonModel> GetPerson_All() {
-      throw new System.NotImplementedException();
+      return PeopleFile.FullFilePath().LoadFile().ConvertToPersonModels();
     }
   }
 }

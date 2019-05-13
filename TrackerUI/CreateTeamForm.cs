@@ -42,12 +42,11 @@ namespace TrackerUI {
         p.EmailAddress = emailTextBox.Text;
         p.CellPhoneNbr = cellPhoneNumberTextBox.Text;
 
-        GlobalConfig.Connection.CreatePerson(p);
+        p = GlobalConfig.Connection.CreatePerson(p);
+        selectedTeamMembers.Add(p);
+        WireUpLists();
 
-        firstNameTextBox.Text = "";
-        lastNameTextBox.Text = "";
-        emailTextBox.Text = "";
-        cellPhoneNumberTextBox.Text = "";
+        ClearCreateMembreFields();
 
       } else {
         MessageBox.Show("You need to fill in all the fields.");
@@ -55,25 +54,30 @@ namespace TrackerUI {
     }
 
     private bool IsFormValid() {
+      HydrateCreateMemberFields();
+      return IsCreateMembreFieldsValid();
+    }
 
-      // TODO: Add validation to the form.
-      bool output = true;
+    private bool IsCreateMembreFieldsValid() {
+      return !(
+        firstNameTextBox.Text.Length == 0 ||
+        lastNameTextBox.Text.Length == 0 ||
+        emailTextBox.Text.Length == 0 ||
+        cellPhoneNumberTextBox.Text.Length == 0);
+    }
 
+    private void HydrateCreateMemberFields() {
       firstNameTextBox.Text = firstNameTextBox.Text.Trim();
       lastNameTextBox.Text = lastNameTextBox.Text.Trim();
       emailTextBox.Text = emailTextBox.Text.Trim();
       cellPhoneNumberTextBox.Text = cellPhoneNumberTextBox.Text.Trim();
+    }
 
-      if (
-        firstNameTextBox.Text.Length == 0 ||
-        lastNameTextBox.Text.Length == 0 ||
-        emailTextBox.Text.Length == 0 ||
-        cellPhoneNumberTextBox.Text.Length == 0
-        ) {
-        output = false;
-      }
-
-      return output;
+    private void ClearCreateMembreFields() {
+      firstNameTextBox.Text = "";
+      lastNameTextBox.Text = "";
+      emailTextBox.Text = "";
+      cellPhoneNumberTextBox.Text = "";
     }
 
     private void AddTeamMemberBtn_Click(object sender, EventArgs e) {
@@ -83,7 +87,7 @@ namespace TrackerUI {
         availableTeamMembers.Remove(p);
         selectedTeamMembers.Add(p);
 
-        WireUpLists(); 
+        WireUpLists();
       }
     }
 
@@ -94,7 +98,7 @@ namespace TrackerUI {
         selectedTeamMembers.Remove(p);
         availableTeamMembers.Add(p);
 
-        WireUpLists(); 
+        WireUpLists();
       }
     }
   }
