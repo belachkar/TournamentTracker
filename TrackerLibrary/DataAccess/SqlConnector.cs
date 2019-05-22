@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using TrackerLibrary.Models;
 
-//@PlaceNbr int, 
+//@PlaceNbr int,
 //@PlaceName nvarchar(50),
 //@PrizeAmount money,
 //@PrizePercentage float,
@@ -32,7 +32,7 @@ namespace TrackerLibrary.DataAccess {
 
         connection.Execute("dbo.spPrizes_Insert", p, commandType: CommandType.StoredProcedure);
 
-        model.id = p.Get<int>("@id");
+        model.Id = p.Get<int>("@id");
 
         return model;
       }
@@ -72,17 +72,30 @@ namespace TrackerLibrary.DataAccess {
         p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
         connection.Execute("dbo.spTeams_Insert", p, commandType: CommandType.StoredProcedure);
-        model.id = p.Get<int>("@id");
+        model.Id = p.Get<int>("@id");
 
         foreach (PersonModel tm in model.TeamMembers) {
           p = new DynamicParameters();
-          p.Add("@teamId", model.id);
+          p.Add("@teamId", model.Id);
           p.Add("@personId", tm.id);
 
           connection.Execute("dbo.spTeamMembres_Insert", p, commandType: CommandType.StoredProcedure);
         }
         return model;
       }
+    }
+
+    public List<TeamModel> GetTeam_All() {
+      List<TeamModel> output;
+      using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(DB))) {
+        output = connection.Query<TeamModel>("dbo.spTeam_GetAll").ToList();
+        foreach (TeamModel team in output) {
+          var p = new DynamicParameters();
+          p.Add("@TeamId", team.Id);
+          team.TeamMembers = connection.Query<PersonModel>("dbo.spTeamMembers_GetByTeam", p, commandType: CommandType.StoredProcedure).ToList();
+        }
+      }
+      return output;
     }
   }
 }

@@ -8,7 +8,7 @@
     /// <summary>
     /// The unique identifier for the prize
     /// </summary>
-    public int id { get; set; }
+    public int Id { get; set; }
 
     /// <summary>
     /// the prize place number.

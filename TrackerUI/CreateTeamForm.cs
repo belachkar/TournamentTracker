@@ -6,13 +6,15 @@ using TrackerLibrary.Models;
 
 namespace TrackerUI {
   public partial class CreateTeamForm : Form {
+    ITeamRequester callingForm;
     private List<PersonModel> availableTeamMembers = GlobalConfig.Connection.GetPerson_All();
     private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
 
-    public CreateTeamForm() {
+    public CreateTeamForm(ITeamRequester caller) {
       InitializeComponent();
       //CreateSimpleData();
       WireUpLists();
+      callingForm = caller;
     }
 
     private void CreateSimpleData() {
@@ -111,14 +113,16 @@ namespace TrackerUI {
           model.TeamName = teamNameTextBox.Text;
           model.TeamMembers = selectedTeamMembers;
           GlobalConfig.Connection.CreateTeam(model);
+
+          callingForm.TeamComplete(model);
+
+          this.Close();
         } else {
           MessageBox.Show("You must select team membres, the list can not be empty");
         }
       } else {
         MessageBox.Show("You must specity a Team Name");
       }
-
-      // TODO: If we aren't closing this form after creation, reset the form.
     }
   }
 }

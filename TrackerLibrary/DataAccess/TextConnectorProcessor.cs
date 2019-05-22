@@ -29,7 +29,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers {
         string[] cols = line.Split(',');
 
         PrizeModel p = new PrizeModel();
-        p.id = int.Parse(cols[0]);
+        p.Id = int.Parse(cols[0]);
         p.PlaceNumber = int.Parse(cols[1]);
         p.PlaceName = cols[2];
         p.PrizeAmount = decimal.Parse(cols[3]);
@@ -43,7 +43,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers {
       List<string> lines = new List<string>();
 
       foreach (PrizeModel p in models) {
-        lines.Add($"{p.id},{p.PlaceNumber},{p.PlaceName},{p.PrizeAmount},{p.PrizePercentage}");
+        lines.Add($"{p.Id},{p.PlaceNumber},{p.PlaceName},{p.PrizeAmount},{p.PrizePercentage}");
       }
       File.WriteAllLines(fileName.FullFilePath(), lines);
     }
@@ -84,7 +84,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers {
       foreach (string line in lines) {
         string[] cols = line.Split(',');
         TeamModel t = new TeamModel();
-        t.id = int.Parse(cols[0]);
+        t.Id = int.Parse(cols[0]);
         t.TeamName = cols[1];
 
         string[] personIds = cols[2].Split('|');
@@ -104,7 +104,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers {
 
       foreach (TeamModel t in models) {
         string teamMembresIds = ConvertPeopleListToString(t.TeamMembers);
-        lines.Add($"{t.id},{t.TeamName},{teamMembresIds}");
+        lines.Add($"{t.Id},{t.TeamName},{teamMembresIds}");
       }
 
       File.WriteAllLines(fileName.FullFilePath(), lines);
